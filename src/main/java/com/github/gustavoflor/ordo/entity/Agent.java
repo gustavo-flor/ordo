@@ -20,6 +20,11 @@ public class Agent extends Entity {
     private Role role;
     private Rank rank;
     private Integer paranormalExposureLevel;
+    private Integer agility;
+    private Integer strength;
+    private Integer intellect;
+    private Integer presence;
+    private Integer vitality;
 
     public static Agent of(final CreateAgentUseCase.Payload payload) {
         return Agent.builder()
@@ -28,6 +33,11 @@ public class Agent extends Entity {
                 .role(payload.role())
                 .rank(payload.rank())
                 .paranormalExposureLevel(payload.paranormalExposureLevel())
+                .agility(payload.agility())
+                .strength(payload.strength())
+                .intellect(payload.intellect())
+                .presence(payload.presence())
+                .vitality(payload.vitality())
                 .build();
     }
 }
