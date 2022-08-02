@@ -17,11 +17,21 @@ public interface CreateAgentUseCase {
                    @NotNull Origin origin,
                    @NotNull Role role,
                    @NotNull Rank rank,
-                   @NotNull @Min(0) @Max(100) Integer paranormalExposureLevel,
                    @NotNull @Min(0) @Max(5) Integer agility,
                    @NotNull @Min(0) @Max(5) Integer strength,
                    @NotNull @Min(0) @Max(5) Integer intellect,
                    @NotNull @Min(0) @Max(5) Integer presence,
                    @NotNull @Min(0) @Max(5) Integer vitality) {
+        public int initialLifePoints() {
+            return role.getInitialLifePoints(vitality);
+        }
+
+        public int initialEffortPoints() {
+            return role.getInitialEffortPoints(presence);
+        }
+
+        public int initialSanityPoints() {
+            return role.getInitialSanityPoints();
+        }
     }
 }

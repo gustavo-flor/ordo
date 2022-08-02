@@ -1,4 +1,4 @@
-package com.github.gustavoflor.ordo.controller.advice;
+package com.github.gustavoflor.ordo.web.controller.advice;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

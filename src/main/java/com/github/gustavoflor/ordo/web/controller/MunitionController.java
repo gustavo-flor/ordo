@@ -1,22 +1,21 @@
-package com.github.gustavoflor.ordo.controller;
+package com.github.gustavoflor.ordo.web.controller;
 
-import com.github.gustavoflor.ordo.model.Weapon;
+import com.github.gustavoflor.ordo.model.Munition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping("/weapons")
+@RequestMapping("/munitions")
 @RequiredArgsConstructor
-public class WeaponController {
+public class MunitionController {
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<Weapon> findAll() {
-        return Arrays.stream(Weapon.values()).toList();
+    public List<Munition> findAll() {
+        return Munition.values();
     }
 }

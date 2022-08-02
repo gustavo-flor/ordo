@@ -4,17 +4,19 @@ import com.github.gustavoflor.ordo.context.ThreadContext;
 import com.github.gustavoflor.ordo.entity.Agent;
 import com.github.gustavoflor.ordo.mapping.UseCase;
 import com.github.gustavoflor.ordo.repository.AgentRepository;
-import com.github.gustavoflor.ordo.usecase.CreateAgentUseCase;
+import com.github.gustavoflor.ordo.usecase.FindAgentByIdUseCase;
 import lombok.RequiredArgsConstructor;
+
+import java.util.Optional;
 
 @UseCase
 @RequiredArgsConstructor
-public class CreateAgentUseCaseImpl implements CreateAgentUseCase {
+public class FindAgentByIdUseCaseImpl implements FindAgentByIdUseCase {
     private final AgentRepository agentRepository;
 
     @Override
-    public Agent execute(Payload payload) {
+    public Optional<Agent> execute(final String id) {
         final String userId = ThreadContext.getUserId().orElseThrow();
-        return agentRepository.save(Agent.of(userId, payload));
+        return agentRepository.findByIdAndUserId(id, userId);
     }
 }
