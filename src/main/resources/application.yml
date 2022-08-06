@@ -12,12 +12,10 @@ spring:
   data:
     mongodb:
       uri: ${MONGODB_URI:mongodb://localhost:27017/ordo}
-      auto-index-creation: true
+      auto-index-creation: false
 management:
   endpoints:
     web:
       exposure:
-        include: health,prometheus
-      path-mapping:
-        prometheus: metrics
+        include: health
       base-path: /
