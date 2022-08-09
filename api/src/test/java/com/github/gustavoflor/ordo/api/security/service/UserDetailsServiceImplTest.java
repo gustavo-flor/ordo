@@ -1,4 +1,4 @@
-package com.github.gustavoflor.ordo.security.service;
+package com.github.gustavoflor.ordo.api.security.service;
 
 import com.github.gustavoflor.ordo.core.entity.User;
 import com.github.gustavoflor.ordo.core.repository.UserRepository;
@@ -50,11 +50,18 @@ class UserDetailsServiceImplTest {
         """)
     void givenAExistentUsernameWhenLoadUserByUsernameThenReturnUser() {
         final var username = FAKER.name().username();
-        doReturn(Optional.of(new User())).when(userRepository).findByEmail(username);
+        final var password = FAKER.internet().password();
+        doReturn(Optional.of(new User(username, password))).when(userRepository).findByEmail(username);
 
         final var user = userDetailsService.loadUserByUsername(username);
 
-        assertThat(user).isNotNull();
+        assertThat(user.getUsername()).isEqualTo(username);
+        assertThat(user.getPassword()).isEqualTo(password);
+        assertThat(user.getAuthorities()).isEmpty();
+        assertThat(user.isAccountNonExpired()).isTrue();
+        assertThat(user.isAccountNonLocked()).isTrue();
+        assertThat(user.isEnabled()).isTrue();
+        assertThat(user.isCredentialsNonExpired()).isTrue();
         verify(userRepository).findByEmail(username);
     }
 }

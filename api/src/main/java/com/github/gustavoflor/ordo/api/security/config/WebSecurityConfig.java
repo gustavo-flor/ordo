@@ -1,4 +1,4 @@
-package com.github.gustavoflor.ordo.security.config;
+package com.github.gustavoflor.ordo.api.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
