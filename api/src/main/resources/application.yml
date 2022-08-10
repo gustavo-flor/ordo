@@ -8,7 +8,7 @@ spring:
   main:
     banner-mode: off
   application:
-    name: ordo-application
+    name: ordo-api-application
   data:
     mongodb:
       uri: ${MONGODB_URI:mongodb://localhost:27017/ordo}
